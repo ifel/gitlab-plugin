@@ -3,5 +3,5 @@ sudo: required
 services:
   - docker
 script:
-  - mvn test -B
+  - mvn test -B -Dmaven.test.redirectTestOutputToFile=false
   - mvn integration-test -Pintegration-test -B
