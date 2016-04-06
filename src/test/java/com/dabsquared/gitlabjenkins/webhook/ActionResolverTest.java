@@ -7,6 +7,7 @@ import com.dabsquared.gitlabjenkins.webhook.status.BranchStatusPngAction;
 import com.dabsquared.gitlabjenkins.webhook.status.CommitBuildPageRedirectAction;
 import com.dabsquared.gitlabjenkins.webhook.status.CommitStatusPngAction;
 import com.dabsquared.gitlabjenkins.webhook.status.StatusJsonAction;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -27,6 +28,7 @@ import static org.mockito.Mockito.when;
  * @author Robin Müller
  */
 @RunWith(MockitoJUnitRunner.class)
+@Ignore
 public class ActionResolverTest {
 
     @Rule
