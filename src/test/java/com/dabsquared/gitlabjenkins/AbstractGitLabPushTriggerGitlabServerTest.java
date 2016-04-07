@@ -118,6 +118,7 @@ public abstract class AbstractGitLabPushTriggerGitlabServerTest {
 	protected GitLabPushTrigger setUpWithPushTrigger() {
 		boolean triggerOnPush = true;
 		boolean triggerOnMergeRequest = true;
+		boolean triggerOnMergeUpdateRequest = false;
 		String triggerOpenMergeRequestOnPush = "both";
 		boolean ciSkip = false;
 		boolean setBuildDescription = true;
@@ -130,9 +131,9 @@ public abstract class AbstractGitLabPushTriggerGitlabServerTest {
 		String excludeBranchesSpec = null;
 		String targetBranchRegex = null;
 		GitLabPushTrigger gitLabPushTrigger = new GitLabPushTrigger(triggerOnPush, triggerOnMergeRequest,
-				triggerOpenMergeRequestOnPush, ciSkip, setBuildDescription, addNoteOnMergeRequest, addCiMessage,
-				addVoteOnMergeRequest, acceptMergeRequestOnSuccess, branchFilter, includeBranchesSpec,
-				excludeBranchesSpec, targetBranchRegex);
+				triggerOnMergeUpdateRequest, triggerOpenMergeRequestOnPush, ciSkip, setBuildDescription,
+				addNoteOnMergeRequest, addCiMessage, addVoteOnMergeRequest, acceptMergeRequestOnSuccess,
+				branchFilter, includeBranchesSpec, excludeBranchesSpec, targetBranchRegex);
 
 		return gitLabPushTrigger;
 	}

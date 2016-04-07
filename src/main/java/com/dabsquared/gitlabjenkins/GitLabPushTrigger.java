@@ -80,6 +80,7 @@ public class GitLabPushTrigger extends Trigger<Job<?, ?>> {
 	private static final Logger LOGGER = Logger.getLogger(GitLabPushTrigger.class.getName());
 	private boolean triggerOnPush = true;
     private boolean triggerOnMergeRequest = true;
+    private boolean triggerOnMergeUpdateRequest = false;
     private final String triggerOpenMergeRequestOnPush;
     private boolean ciSkip = true;
     private boolean setBuildDescription = true;
@@ -94,12 +95,14 @@ public class GitLabPushTrigger extends Trigger<Job<?, ?>> {
     private boolean acceptMergeRequestOnSuccess = false;
 
     @DataBoundConstructor
-    public GitLabPushTrigger(boolean triggerOnPush, boolean triggerOnMergeRequest, String triggerOpenMergeRequestOnPush,
-                             boolean ciSkip, boolean setBuildDescription, boolean addNoteOnMergeRequest, boolean addCiMessage,
-                             boolean addVoteOnMergeRequest, boolean acceptMergeRequestOnSuccess, String branchFilterName,
-                             String includeBranchesSpec, String excludeBranchesSpec, String targetBranchRegex) {
+    public GitLabPushTrigger(boolean triggerOnPush, boolean triggerOnMergeRequest, boolean triggerOnMergeUpdateRequest,
+                             String triggerOpenMergeRequestOnPush, boolean ciSkip, boolean setBuildDescription,
+                             boolean addNoteOnMergeRequest, boolean addCiMessage, boolean addVoteOnMergeRequest,
+                             boolean acceptMergeRequestOnSuccess, String branchFilterName, String includeBranchesSpec,
+                             String excludeBranchesSpec, String targetBranchRegex) {
         this.triggerOnPush = triggerOnPush;
         this.triggerOnMergeRequest = triggerOnMergeRequest;
+        this.triggerOnMergeUpdateRequest = triggerOnMergeUpdateRequest;
         this.triggerOpenMergeRequestOnPush = triggerOpenMergeRequestOnPush;
         this.ciSkip = ciSkip;
         this.setBuildDescription = setBuildDescription;
@@ -119,6 +122,10 @@ public class GitLabPushTrigger extends Trigger<Job<?, ?>> {
 
     public boolean getTriggerOnMergeRequest() {
     	return triggerOnMergeRequest;
+    }
+
+    public boolean getTriggerOnMergeUpdateRequest() {
+        return triggerOnMergeUpdateRequest;
     }
 
     public String getTriggerOpenMergeRequestOnPush() {

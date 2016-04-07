@@ -5,6 +5,14 @@
     <f:entry title="Build on Merge Request Events" field="triggerOnMergeRequest">
         <f:checkbox default="true"/>
     </f:entry>
+    <f:block>
+        <table>
+            <f:entry title="Build on Merge Request update Events" field="triggerOnMergeUpdateRequest"
+                        help="/plugin/gitlab-plugin/help/help-triggerOnMergeUpdateRequest.html">
+                    <f:checkbox default="false"/>
+            </f:entry>
+        </table>
+    </f:block>
     <f:entry title="Build on Push Events" field="triggerOnPush">
         <f:checkbox default="true"/>
     </f:entry>

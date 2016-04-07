@@ -467,10 +467,6 @@ public class GitLabWebHook implements UnprotectedRootAction {
             LOGGER.log(Level.INFO, "Accepted Merge Request, no build started");
             return;
         }
-        if("update".equals(request.getObjectAttribute().getAction())) {
-            LOGGER.log(Level.INFO, "Existing Merge Request, build will be trigged by buildOpenMergeRequests instead");
-            return;
-        }
         if(request.getObjectAttribute().getLastCommit()!=null) {
             Run mergeBuild = getBuildBySHA1(project, request.getObjectAttribute().getLastCommit().getId(), true);
             if (mergeBuild != null) {
@@ -506,6 +502,11 @@ public class GitLabWebHook implements UnprotectedRootAction {
 
             if(trigger.getCiSkip() && request.getObjectAttribute().getDescription().contains("[ci-skip]")) {
                 LOGGER.log(Level.INFO, "Skipping MR " + request.getObjectAttribute().getTitle() + " due to ci-skip.");
+                return;
+            }
+
+            if("update".equals(request.getObjectAttribute().getAction()) && !trigger.getTriggerOnMergeUpdateRequest()) {
+                LOGGER.log(Level.INFO, "Existing Merge Request, build will be trigged by buildOpenMergeRequests instead");
                 return;
             }
 
